@@ -1,0 +1,210 @@
+import os
+from classes import *
+
+livros = {
+    1 : Livro("Dom Casmurro", "Machado de Assis", "Romance"),
+    2 : Livro("Memórias Póstumas de Brás Cubas", "Machado de Assis", "Romance"),
+    3 : Livro("Quincas Borba", "Machado de Assis", "Romance"),
+    4 : Livro("Frankenstein", "Mary Shelley", "Terror"),
+    5 : Livro("Drácula", "Bram Stoker", "Terror"),
+    6 : Livro("Evangelho de Sangue", "Clive Barker", "Terror"),
+    7 : Livro("Morangos Mofados", "Caio Fernando Abreu", "Contos"),
+    8 : Livro("O Alienista", "Machado de Assis", "Contos"),
+    9 : Livro("O Cartomante", "Machado de Assis", "Contos"),
+    10 : Livro("Marília de Dirceu", "Tomás Antônio Gonzaga", "Poesia"),
+    11 : Livro("Toda Poesia", "Paulo Leminski", "Poesia"),
+    12 : Livro("Os Lusíadas", "Luís de Camões", "Poesia"),
+    13 : Livro("Alguma Poesia", "Carlos Drummond de Andrade", "Poesia"),
+    14 : Livro("Star Wars: Marcas da Guerra", "Chuck Wendig", "Ação"),
+    15 : Livro("A Bússola de Ouro", "Philip Pullman", "Ação"),
+    16 : Livro("Ponto de Impacto", "Dan Brown", "Ação"),
+    17 : Livro("Apologia de Sócrates", "Platão", "Filosofia"),
+    18 : Livro("O Príncipe", "Maquiavel", "Filosofia"),
+    19 : Livro("A República", "Platão", "Filosofia"),
+    20 : Livro("Os Dois Morrem no Final", "Adam Silvera", "Infanto Juvenil"),
+    21 : Livro("Retórica", "Aristóteles", "Filosofia"),
+    22 : Livro("O Diário de Anne Frank", "Anne Frank", "História"),
+    23 : Livro("Sapiens: Uma Breve História da Humanidade", "Yuval Noah Harari", "História"),
+    24 : Livro("Diário de um Banana", "Jeff Kinney", "Infanto Juvenil"),
+    25 : Livro("As Crônicas de Nárnia", "C. S. Lewis", "Infanto Juvenil"),
+    26 : Livro("Pedagogia do Oprimido", "Paulo Freire", "Filosofia"),
+    27 : Livro("Tópicos", "Aristóteles", "Filosofia"),
+    28 : Livro("Crítica da Razão Pura", "Immanuel Kant", "Filosofia"),
+    }
+
+
+def adicionar(livros):
+        os.system("cls")
+        nome = input("Informe o NOME do livro: ")
+        autor = input("Informe o AUTOR do livro: ")
+        genero = input("Informe o GÊNERO do livro: ")
+            
+    
+        livros[len(livros) + 1] = Livro(nome=nome, autor=autor, genero=genero)
+        print("* Livro adicionado com sucesso! *\n")
+        os.system("pause")
+    
+
+def remover(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    listartudo(livros=livros)
+    id_remover = int(input("\nDigite o NÚMERO do livro que deseja remover\n-->  "))
+    if id_remover in livros:
+        removido = livros.pop(id_remover)
+        print(f"\nLivro '{removido.getNome()}' removido com sucesso!")
+
+
+
+def listartudo(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    os.system("cls")
+    print("--- LISTA DE LIVROS ---")
+    print("")
+    
+    for chave, valor in livros.items():
+        print(f"{chave}° - \tNome --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n\tGênero --> {valor.getGenero()}\n\tSituação --> {valor.getSituacao()}\n")
+    
+    os.system("pause")
+
+def listar(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    os.system("cls")
+    print("--- COMO VOCÊ DESEJA LISTAR OS LIVROS? ---")
+    print("")
+    deseja = int(input("1 - Autor\n2 - Gênero\n3 - Livros emprestados\n--> "))
+    if deseja == 1:
+        listarautor(livros=livros)
+    elif deseja == 2:
+        listargenero(livros=livros)
+    elif deseja == 3:
+        listaremprestados(livros=livros)
+    
+def listarautor(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    os.system("cls")
+    print("--- LISTA DE LIVROS POR AUTOR ---")
+    print("")
+    
+    for chave, valor in livros.items():
+        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+    
+    os.system("pause")
+
+def listargenero(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    os.system("cls")
+    print("--- LISTA DE LIVROS POR GÊNERO ---")
+    print("")
+    
+    for chave, valor in livros.items():
+        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+    os.system("pause")
+
+def listaremprestados(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    os.system("cls")
+    print("--- LISTA DE LIVROS POR EMPRÉSTIMO ---")
+    print("")
+    
+    for chave, valor in livros.items():
+        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
+
+def atualizar(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    listartudo(livros=livros)
+
+    alterar = int(input("Informe o NÚMERO do livro que deseja alterar\n--> "))
+    caracteristica = int(input("Qual caracteristica quer alterar\n1 - Nome\n2 - Autor\n3 - Gênero\n--> "))
+    os.system("cls")
+
+    if caracteristica == 1:
+        nome = input("Informe o nome do livro\n--> ")
+        livros[alterar].setNome(nome)
+    elif caracteristica == 2:
+        autor = input("Informe o autor do livro\n--> ")
+        livros[alterar].setAutor(autor)
+    elif caracteristica == 3:
+        genero = input("Informe o gênero do livro\n--> ")
+        livros[alterar].setGenero(genero)
+    listartudo(livros=livros)
+
+def emprestar(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    print("--- LISTA DE LIVROS POR EMPRÉSTIMO ---")
+    print("")
+    for chave, valor in livros.items():
+        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
+
+    alterar = int(input("Informe o NÚMERO do livro que deseja emprestar\n--> "))
+    situacao = int(input("Emprestar livro\n1 - Sim\n2 - Não\n--> "))
+    os.system("cls")
+
+    if situacao == 1:
+        livros[alterar].setSituacao("Emprestado")
+    else:
+        print("Empréstimo cancelado...")
+        os.system("pause")
+        return
+
+
+def menu():
+
+#menu
+    while True:
+        os.system("cls")
+        print("BEM VINDO A BIBLIOTECA LIVROTECH\n1 - Adicionar livro\n2 - Remover livro\n3 - Listar todos os livros\n4 - Listar livros por preferência\n5 - Editar detalhes\n6 - Emprestar livro\n7 - Devolver livro\n8 - Sair")
+        escolha = int(input("\nEscolha a opção desejada --> "))    
+
+        if escolha == 1:
+            adicionar(livros=livros)
+        elif escolha ==2:
+            remover(livros=livros)
+        elif escolha == 3:
+            listartudo(livros=livros)
+        elif escolha == 4:
+            listar(livros=livros)
+        elif escolha == 5:
+            atualizar(livros=livros)
+        elif escolha == 6:
+            emprestar(livros=livros)
+        elif escolha == 7:
+            pass
+        elif escolha == 8:
+            os.system("cls")
+            print("SAINDO...")
+            break
+        else:
+            print("ESCOLHA INVALIDA")
+            os.system("pause")
