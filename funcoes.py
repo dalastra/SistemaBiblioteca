@@ -2,34 +2,34 @@ import os
 from classes import *
 
 livros = {
-    1 : Livro("Dom Casmurro", "Machado de Assis", "Romance"),
+    1 : Livro("Dom Casmurro", "Machado de Assis", "Romance","Emprestado"),
     2 : Livro("Memórias Póstumas de Brás Cubas", "Machado de Assis", "Romance"),
     3 : Livro("Quincas Borba", "Machado de Assis", "Romance"),
     4 : Livro("Frankenstein", "Mary Shelley", "Terror"),
     5 : Livro("Drácula", "Bram Stoker", "Terror"),
-    6 : Livro("Evangelho de Sangue", "Clive Barker", "Terror"),
+    6 : Livro("Evangelho de Sangue", "Clive Barker", "Terror","Emprestado"),
     7 : Livro("Morangos Mofados", "Caio Fernando Abreu", "Contos"),
     8 : Livro("O Alienista", "Machado de Assis", "Contos"),
     9 : Livro("O Cartomante", "Machado de Assis", "Contos"),
     10 : Livro("Marília de Dirceu", "Tomás Antônio Gonzaga", "Poesia"),
-    11 : Livro("Toda Poesia", "Paulo Leminski", "Poesia"),
+    11 : Livro("Toda Poesia", "Paulo Leminski", "Poesia","Emprestado"),
     12 : Livro("Os Lusíadas", "Luís de Camões", "Poesia"),
     13 : Livro("Alguma Poesia", "Carlos Drummond de Andrade", "Poesia"),
     14 : Livro("Star Wars: Marcas da Guerra", "Chuck Wendig", "Ação"),
-    15 : Livro("A Bússola de Ouro", "Philip Pullman", "Ação"),
-    16 : Livro("Ponto de Impacto", "Dan Brown", "Ação"),
+    15 : Livro("A Bússola de Ouro", "Philip Pullman", "Ação","Emprestado"),
+    16 : Livro("Ponto de Impacto", "Dan Brown", "Ação","Emprestado"),
     17 : Livro("Apologia de Sócrates", "Platão", "Filosofia"),
     18 : Livro("O Príncipe", "Maquiavel", "Filosofia"),
-    19 : Livro("A República", "Platão", "Filosofia"),
+    19 : Livro("A República", "Platão", "Filosofia","Emprestado"),
     20 : Livro("Os Dois Morrem no Final", "Adam Silvera", "Infanto Juvenil"),
     21 : Livro("Retórica", "Aristóteles", "Filosofia"),
     22 : Livro("O Diário de Anne Frank", "Anne Frank", "História"),
     23 : Livro("Sapiens: Uma Breve História da Humanidade", "Yuval Noah Harari", "História"),
-    24 : Livro("Diário de um Banana", "Jeff Kinney", "Infanto Juvenil"),
+    24 : Livro("Diário de um Banana", "Jeff Kinney", "Infanto Juvenil","Emprestado"),
     25 : Livro("As Crônicas de Nárnia", "C. S. Lewis", "Infanto Juvenil"),
-    26 : Livro("Pedagogia do Oprimido", "Paulo Freire", "Filosofia"),
+    26 : Livro("Pedagogia do Oprimido", "Paulo Freire", "Filosofia","Emprestado"),
     27 : Livro("Tópicos", "Aristóteles", "Filosofia"),
-    28 : Livro("Crítica da Razão Pura", "Immanuel Kant", "Filosofia"),
+    28 : Livro("Crítica da Razão Pura", "Immanuel Kant", "Filosofia","Emprestado"),
     }
 
 
@@ -83,7 +83,7 @@ def listar(livros):
     os.system("cls")
     print("--- COMO VOCÊ DESEJA LISTAR OS LIVROS? ---")
     print("")
-    deseja = int(input("1 - Autor\n2 - Gênero\n3 - Livros emprestados\n--> "))
+    deseja = int(input("1 - Autor\n2 - Gênero\n3 - Livros emprestados\n\n--> "))
     if deseja == 1:
         listarautor(livros=livros)
     elif deseja == 2:
@@ -129,9 +129,9 @@ def listaremprestados(livros):
     os.system("cls")
     print("--- LISTA DE LIVROS POR EMPRÉSTIMO ---")
     print("")
-    
     for chave, valor in livros.items():
         print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
+
 
 def atualizar(livros):
     os.system("cls")
@@ -168,17 +168,54 @@ def emprestar(livros):
         print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
 
     alterar = int(input("Informe o NÚMERO do livro que deseja emprestar\n--> "))
-    situacao = int(input("Emprestar livro\n1 - Sim\n2 - Não\n--> "))
-    os.system("cls")
+    if alterar not in livros:
+        print("Número inválido!")
+        os.system("pause")
+        return
 
+    if livros[alterar].getSituacao() == "Emprestado":
+        os.system("cls")
+        print("Esse livro já está emprestado!")
+        os.system("pause")
+        return
+
+    situacao = int(input("Emprestar livro\n1 - Sim\n2 - Não\n\n--> "))
+    os.system("cls")
     if situacao == 1:
         livros[alterar].setSituacao("Emprestado")
     else:
         print("Empréstimo cancelado...")
         os.system("pause")
         return
+    
+def devolver(livros):
+    os.system("cls")
+    if not livros:
+        print("Nenhum livro cadastrado!")
+        os.system("pause")
+        return
+    print("--- LISTA DE LIVROS PARA DEVOLUÇÃO ---")
+    print("")
+    for chave, valor in livros.items():
+        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
 
+    alterar = int(input("Informe o NÚMERO do livro que deseja fazer a devolução\n--> "))
+    if alterar not in livros:
+        print("Número inválido!")
+        os.system("pause")
+        return
 
+    if livros[alterar].getSituacao() == "Disponível":
+        os.system("cls")
+        print("Esse livro já foi devolvido!")
+        os.system("pause")
+        return
+    
+    else:
+        livros[alterar].setSituacao("Disponível")
+        print("Devolução feita com sucesso!")
+        os.system("pause")
+    
 def menu():
 
 #menu
@@ -200,7 +237,7 @@ def menu():
         elif escolha == 6:
             emprestar(livros=livros)
         elif escolha == 7:
-            pass
+            devolver(livros=livros)
         elif escolha == 8:
             os.system("cls")
             print("SAINDO...")
