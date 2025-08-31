@@ -38,12 +38,11 @@ def adicionar(livros):
         nome = input("Informe o NOME do livro: ")
         autor = input("Informe o AUTOR do livro: ")
         genero = input("Informe o GÊNERO do livro: ")
-            
-    
+        
         livros[len(livros) + 1] = Livro(nome=nome, autor=autor, genero=genero)
         print("* Livro adicionado com sucesso! *\n")
         os.system("pause")
-    
+
 
 def remover(livros):
     os.system("cls")
@@ -58,7 +57,6 @@ def remover(livros):
         print(f"\nLivro '{removido.getNome()}' removido com sucesso!")
 
 
-
 def listartudo(livros):
     os.system("cls")
     if not livros:
@@ -68,11 +66,10 @@ def listartudo(livros):
     os.system("cls")
     print("--- LISTA DE LIVROS ---")
     print("")
-    
     for chave, valor in livros.items():
         print(f"{chave}° - \tNome --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n\tGênero --> {valor.getGenero()}\n\tSituação --> {valor.getSituacao()}\n")
-    
     os.system("pause")
+
 
 def listar(livros):
     os.system("cls")
@@ -91,6 +88,7 @@ def listar(livros):
     elif deseja == 3:
         listaremprestados(livros=livros)
     
+
 def listarautor(livros):
     os.system("cls")
     if not livros:
@@ -100,11 +98,164 @@ def listarautor(livros):
     os.system("cls")
     print("--- LISTA DE LIVROS POR AUTOR ---")
     print("")
-    
-    for chave, valor in livros.items():
-        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
-    
-    os.system("pause")
+    print("1 - Machado de Assis\n2 - Mary Shelley\n3 - Bram Stoker\n4 - Clive Barker\n5 - Caio Fernando Abreu\n6 - Tomás Antônio Gonzaga\n7 - Paulo Leminski\n8 - Luís de Camões\n9 - Carlos Drummond de Andrade\n10 - Chuck Wendig\n11 - Philip Pullman\n12 - Dan Brown\n13 - Platão\n14 - Maquiavel\n15 - Adam Silvera\n16 - Aristóteles\n17 - Anne Frank\n18 - Yuval Noah Harari\n19 - Jeff Kinney\n20 - C. S. Lewis\n21 - Paulo Freire\n22 - Immanuel Kant\n")
+    escolha_aut = int(input("Informe o NÚMERO do autor que você deseja listar --> "))
+    os.system("cls")
+    if escolha_aut == 1:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Machado de Assis":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause") 
+    elif escolha_aut == 2:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Mary Shelley":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 3:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Bram Stoker":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 4:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Clive Barker":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 5:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Caio Fernando Abreu":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 6:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Tomás Antônio Gonzaga":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 7:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Paulo Leminski":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 8:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Luís de Camões":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 9:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Carlos Drummond de Andrade":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 10:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Chuck Wendig":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 11:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Philip Pullman":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 12:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Dan Brown":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 13:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Platão":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 14:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Maquiavel":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 15:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Adam Silvera":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 16:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Aristóteles":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 17:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Anne Frank":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 18:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Yuval Noah Harari":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 19:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Jeff Kinney":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 20:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "C. S. Lewis":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 21:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Paulo Freire":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_aut == 22:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getAutor() == "Immanuel Kant":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
+                encontrou = True
+        os.system("pause")
+
 
 def listargenero(livros):
     os.system("cls")
@@ -115,10 +266,66 @@ def listargenero(livros):
     os.system("cls")
     print("--- LISTA DE LIVROS POR GÊNERO ---")
     print("")
+    print("1 - Romance\n2 - Terror\n3 - Contos\n4 - Poesia\n5 - Ação\n6 - Filosofia\n7 - Infanto Juvenil\n8 - História")
+    escolha_gen = int(input("Informe o NÚMERO do gênero que você deseja listar --> "))
+    os.system("cls")
+    if escolha_gen == 1:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getGenero() == "Romance":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+                encontrou = True
+        os.system("pause") 
+    elif escolha_gen == 2:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getGenero() == "Terror":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_gen == 3:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getGenero() == "Contos":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_gen == 4:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getGenero() == "Poesia":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_gen == 5:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getGenero() == "Ação":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_gen == 6:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getGenero() == "Filosofia":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_gen == 7:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getGenero() == "Infanto Juvenil":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+                encontrou = True
+        os.system("pause")
+    elif escolha_gen == 8:
+        encontrou = False
+        for chave, valor in livros.items():
+            if valor.getGenero() == "História":
+                print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
+                encontrou = True
+        os.system("pause")
     
-    for chave, valor in livros.items():
-        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
-    os.system("pause")
 
 def listaremprestados(livros):
     os.system("cls")
@@ -129,8 +336,12 @@ def listaremprestados(livros):
     os.system("cls")
     print("--- LISTA DE LIVROS POR EMPRÉSTIMO ---")
     print("")
+    encontrou = False
     for chave, valor in livros.items():
-        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
+        if valor.getSituacao() == "Emprestado":
+            print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
+            encontrou = True
+    os.system("pause")
 
 
 def atualizar(livros):
@@ -144,7 +355,6 @@ def atualizar(livros):
     alterar = int(input("Informe o NÚMERO do livro que deseja alterar\n--> "))
     caracteristica = int(input("Qual caracteristica quer alterar\n1 - Nome\n2 - Autor\n3 - Gênero\n--> "))
     os.system("cls")
-
     if caracteristica == 1:
         nome = input("Informe o nome do livro\n--> ")
         livros[alterar].setNome(nome)
@@ -156,49 +366,56 @@ def atualizar(livros):
         livros[alterar].setGenero(genero)
     listartudo(livros=livros)
 
+
 def emprestar(livros):
     os.system("cls")
     if not livros:
         print("Nenhum livro cadastrado!")
         os.system("pause")
         return
-    print("--- LISTA DE LIVROS POR EMPRÉSTIMO ---")
+    print("--- LISTA DE LIVROS DISPONÍVEIS ---")
     print("")
+    encontrou = False
     for chave, valor in livros.items():
-        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
-
+        if valor.getSituacao() == "Disponível":
+            print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
+            encontrou = True
+    os.system("pause")
     alterar = int(input("Informe o NÚMERO do livro que deseja emprestar\n--> "))
     if alterar not in livros:
         print("Número inválido!")
         os.system("pause")
         return
-
     if livros[alterar].getSituacao() == "Emprestado":
         os.system("cls")
         print("Esse livro já está emprestado!")
         os.system("pause")
         return
-
     situacao = int(input("Emprestar livro\n1 - Sim\n2 - Não\n\n--> "))
     os.system("cls")
     if situacao == 1:
         livros[alterar].setSituacao("Emprestado")
+        print("Empréstimo feito com sucesso!")
+        os.system("pause")
     else:
         print("Empréstimo cancelado...")
         os.system("pause")
         return
     
+
 def devolver(livros):
     os.system("cls")
     if not livros:
         print("Nenhum livro cadastrado!")
         os.system("pause")
         return
-    print("--- LISTA DE LIVROS PARA DEVOLUÇÃO ---")
+    print("--- LISTA DE LIVROS EMPRESTADOS  ---")
     print("")
+    encontrou = False
     for chave, valor in livros.items():
-        print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
-
+        if valor.getSituacao() == "Emprestado":
+            print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
+            encontrou = True
     alterar = int(input("Informe o NÚMERO do livro que deseja fazer a devolução\n--> "))
     if alterar not in livros:
         print("Número inválido!")
@@ -215,6 +432,7 @@ def devolver(livros):
         livros[alterar].setSituacao("Disponível")
         print("Devolução feita com sucesso!")
         os.system("pause")
+    
     
 def menu():
 
