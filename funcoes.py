@@ -1,7 +1,7 @@
-import os
-from classes import *
+import os #importa a biblioteca
+from classes import * #importa tudo que tem em classes.py
 
-livros = {
+livros = { #diconário de livros ja cadastrados
     1 : Livro("Dom Casmurro", "Machado de Assis", "Romance","Emprestado"),
     2 : Livro("Memórias Póstumas de Brás Cubas", "Machado de Assis", "Romance"),
     3 : Livro("Quincas Borba", "Machado de Assis", "Romance"),
@@ -33,27 +33,27 @@ livros = {
     }
 
 
-def adicionar(livros):
+def adicionar(livros): #adiciona livros no sistema
         os.system("cls")
-        nome = input("Informe o NOME do livro: ")
+        nome = input("Informe o NOME do livro: ") #recebe as informações do livro que sera adicionado
         autor = input("Informe o AUTOR do livro: ")
         genero = input("Informe o GÊNERO do livro: ")
         
-        livros[len(livros) + 1] = Livro(nome=nome, autor=autor, genero=genero)
+        livros[len(livros) + 1] = Livro(nome=nome, autor=autor, genero=genero) # adiciona o livro dentro do dicionário, a situação do livro ja vem como padrão "Disponível"
         print("* Livro adicionado com sucesso! *\n")
         os.system("pause")
 
 
-def remover(livros):
+def remover(livros): #remove os livros do sistema
     os.system("cls")
-    if not livros:
+    if not livros: # se não houver nenhum livro cadastrado ele retorna ao menu inicial
         print("Nenhum livro cadastrado!")
         os.system("pause")
         return
     listartudo(livros=livros)
-    id_remover = int(input("\nDigite o NÚMERO do livro que deseja remover\n-->  "))
-    if id_remover in livros:
-        removido = livros.pop(id_remover)
+    remover = int(input("\nDigite o NÚMERO do livro que deseja remover\n-->  "))
+    if remover in livros:
+        removido = livros.pop(remover) #remove o livro do dicionário usando a função pop
         print(f"\nLivro '{removido.getNome()}' removido com sucesso!")
 
 
@@ -66,7 +66,7 @@ def listartudo(livros):
     os.system("cls")
     print("--- LISTA DE LIVROS ---")
     print("")
-    for chave, valor in livros.items():
+    for chave, valor in livros.items(): # lista todos os livros que tem no dicionário
         print(f"{chave}° - \tNome --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n\tGênero --> {valor.getGenero()}\n\tSituação --> {valor.getSituacao()}\n")
     os.system("pause")
 
@@ -80,7 +80,7 @@ def listar(livros):
     os.system("cls")
     print("--- COMO VOCÊ DESEJA LISTAR OS LIVROS? ---")
     print("")
-    deseja = int(input("1 - Autor\n2 - Gênero\n3 - Livros emprestados\n\n--> "))
+    deseja = int(input("1 - Autor\n2 - Gênero\n3 - Livros emprestados\n\n--> ")) #escolhe a forma de como deseja listar
     if deseja == 1:
         listarautor(livros=livros)
     elif deseja == 2:
