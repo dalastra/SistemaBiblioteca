@@ -1,7 +1,7 @@
 import os #importa a biblioteca
 from classes import * #importa tudo que tem em classes.py
 
-livros = { #diconário de livros ja cadastrados
+livros = { #diconário de livros ja cadastrados, que seguem o molde das classes
     1 : Livro("Dom Casmurro", "Machado de Assis", "Romance","Emprestado"),
     2 : Livro("Memórias Póstumas de Brás Cubas", "Machado de Assis", "Romance"),
     3 : Livro("Quincas Borba", "Machado de Assis", "Romance"),
@@ -57,7 +57,7 @@ def remover(livros): #remove os livros do sistema
         print(f"\nLivro '{removido.getNome()}' removido com sucesso!")
 
 
-def listartudo(livros):
+def listartudo(livros): # lista todos os livros
     os.system("cls")
     if not livros:
         print("Nenhum livro cadastrado!")
@@ -99,12 +99,12 @@ def listarautor(livros):
     print("--- LISTA DE LIVROS POR AUTOR ---")
     print("")
     print("1 - Machado de Assis\n2 - Mary Shelley\n3 - Bram Stoker\n4 - Clive Barker\n5 - Caio Fernando Abreu\n6 - Tomás Antônio Gonzaga\n7 - Paulo Leminski\n8 - Luís de Camões\n9 - Carlos Drummond de Andrade\n10 - Chuck Wendig\n11 - Philip Pullman\n12 - Dan Brown\n13 - Platão\n14 - Maquiavel\n15 - Adam Silvera\n16 - Aristóteles\n17 - Anne Frank\n18 - Yuval Noah Harari\n19 - Jeff Kinney\n20 - C. S. Lewis\n21 - Paulo Freire\n22 - Immanuel Kant\n")
-    escolha_aut = int(input("Informe o NÚMERO do autor que você deseja listar --> "))
+    escolha_aut = int(input("Informe o NÚMERO do autor que você deseja listar --> ")) #escolhe o autor especifico que deseja listar
     os.system("cls")
     if escolha_aut == 1:
         encontrou = False
         for chave, valor in livros.items():
-            if valor.getAutor() == "Machado de Assis":
+            if valor.getAutor() == "Machado de Assis": #lista somente os livros desse autor
                 print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tAutor --> {valor.getAutor()}\n")
                 encontrou = True
         os.system("pause") 
@@ -272,7 +272,7 @@ def listargenero(livros):
     if escolha_gen == 1:
         encontrou = False
         for chave, valor in livros.items():
-            if valor.getGenero() == "Romance":
+            if valor.getGenero() == "Romance": #lista somente livros com o genero escolhido
                 print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tGênero --> {valor.getGenero()}\n")
                 encontrou = True
         os.system("pause") 
@@ -337,7 +337,7 @@ def listaremprestados(livros):
     print("--- LISTA DE LIVROS POR EMPRÉSTIMO ---")
     print("")
     encontrou = False
-    for chave, valor in livros.items():
+    for chave, valor in livros.items(): #lista os livros que tem a situação "Emprestado"
         if valor.getSituacao() == "Emprestado":
             print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
             encontrou = True
@@ -354,7 +354,7 @@ def atualizar(livros):
 
     alterar = int(input("Informe o NÚMERO do livro que deseja alterar\n--> "))
     caracteristica = int(input("Qual caracteristica quer alterar\n1 - Nome\n2 - Autor\n3 - Gênero\n--> "))
-    os.system("cls")
+    os.system("cls")     #usa o método "SET" dentro das classes para alterar as informações
     if caracteristica == 1:
         nome = input("Informe o nome do livro\n--> ")
         livros[alterar].setNome(nome)
@@ -379,7 +379,7 @@ def emprestar(livros):
     for chave, valor in livros.items():
         if valor.getSituacao() == "Disponível":
             print(f"{chave}° - \tLivro --> {valor.getNome()}\n\tSituação --> {valor.getSituacao()}\n")
-            encontrou = True
+            encontrou = True  #altera a situação de "Disponível" para "Emprestado"
     os.system("pause")
     alterar = int(input("Informe o NÚMERO do livro que deseja emprestar\n--> "))
     if alterar not in livros:
@@ -410,7 +410,7 @@ def devolver(livros):
         os.system("pause")
         return
     print("--- LISTA DE LIVROS EMPRESTADOS  ---")
-    print("")
+    print("")     #altera a situação de "Emprestado" para "Diponível"
     encontrou = False
     for chave, valor in livros.items():
         if valor.getSituacao() == "Emprestado":
@@ -436,7 +436,7 @@ def devolver(livros):
     
 def menu():
 
-#menu
+#menu inicial do código
     while True:
         os.system("cls")
         print("BEM VINDO A BIBLIOTECA LIVROTECH\n1 - Adicionar livro\n2 - Remover livro\n3 - Listar todos os livros\n4 - Listar livros por preferência\n5 - Editar detalhes\n6 - Emprestar livro\n7 - Devolver livro\n8 - Sair")
