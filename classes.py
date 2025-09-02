@@ -1,15 +1,14 @@
-class Livro:
-    #Construtor
-    def __init__(self, nome, autor, genero, situacao="Disponível"):
-        self.__nome = nome
+class Livro: #cria um molde
+    def __init__(self, nome, autor, genero, situacao="Disponível"): #o "_init_" é o construtor, ele é executado sempre quando um livro novo é criado
+        self.__nome = nome #"set" é a forma de dizer que aquele dado pertence ao objeto específico
         self.__autor = autor
         self.__genero = genero
-        self.__situacao = situacao
+        self.__situacao = situacao #os dois underlines significa que eles não podem ser acessados diretamente fora da classe
 
 # ----------------- -------------------------
     #Metodos GETs && SETs
 
-    def getNome(self):
+    def getNome(self): #"get" pega as informações dos atributos privados
         return self.__nome
     
     def getAutor(self):
@@ -21,7 +20,7 @@ class Livro:
     def getSituacao(self):
         return self.__situacao
     
-    def setNome(self, nome):
+    def setNome(self, nome): #"set" é usado para alterar as informações, um exemplo é alterar de "Disponível" para "Emprestado"
         self.__nome = nome
         return self.__nome
     
